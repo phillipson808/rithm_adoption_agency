@@ -22,9 +22,24 @@
     {% for pet in pets %}
     <span><img src="{{pet.photo_url}}" height = "300px" alt="">
     <div>
-    <h4><a href="#">{{pet.name}}</a> is available</h4>
+    <h4><a href="/{{pet.id}}">{{pet.name}}</a> is available</h4>
     </div>
     </span>
     {% endfor %}
+
+
+    <span><img src="{{ pf_photo }}" height = "300px" alt="">
+    <div>
+    <h4>{{ pf_name }} is available</h4>
+    <h4>Age: {{ pf_age }}</h4>
+    </div>
+    </span>
+
+
+
+    <!-- pf_name = animals[0]["name"]
+    pf_photo = animals[0]["photos"][0]["medium"]
+    pf_age = animals[0]["age"] -->
+
 </body>
 </html>

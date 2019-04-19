@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/style.css">
+    <title>{{pet.name}}'s page</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <h2>Adopt A Friend</h2>
+            <li><a href="/">Home</a></li>
+            <li><a href="/add">Add Pet</a></li>
+        </ul>
+    </nav>
+    <div class="header">
+        <h1 class="title">Pet Details </h1>
+    </div>
+
+    <div>
+        <h3>Name: {{pet.name}}</h3>
+        <img src="{{pet.photo_url}}" height="300px" alt="">
+        <h3>Age: {{pet.age}}</h3>
+        <h3>Species: {{pet.species}}</h3>
+        <form action="/{{pet.id}}" method="POST">
+            {{ edit_form.hidden_tag() }}
+            {% for field in edit_form
+            if field.widget.input_type != 'hidden' %}
+            <p>
+                <h3>
+                    {{ field.label }}
+                    {{ field }}
+
+                    {% for error in field.errors %}
+                    {{ error }}
+                    {% endfor %}
+                </h3>
+            </p>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
